@@ -70,6 +70,10 @@ https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
 
 https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html
 
+https://pythonhosted.org/bob/temp/bob.db.iris/doc/example.html
+
+https://www.w3resource.com/machine-learning/scikit-learn/iris/python-machine-learning-scikit-learn-iris-basic-exercise-1.php
+
 https://www.geeksforgeeks.org/box-plot-and-histogram-exploration-on-iris-data/
 
 https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
