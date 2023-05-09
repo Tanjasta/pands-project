@@ -15,7 +15,6 @@ Saves a histogram of each variable to a PNG file using the **hist()** method of 
 Outputs a scatter plot of each pair of variables using the **scatter()** method of Matplotlib.
 Overall, the goal of this code is to provide an overview of the data set and to help identify any patterns or relationships between the variables.
 
-## Documentation ##
 
 
 
