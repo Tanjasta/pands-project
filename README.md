@@ -4,7 +4,21 @@
 This repository was created for the Programming and Scripting module of the ATU Mayo Galway 'Higher Diploma in Computer Programming and Data Analytics' course. It was created to perform an exploratory data analysis (EDA) on the Fisher's Iris data set. It contains an evidence of the research of the data set, a Python code and a writen documentation, including descriptions of the research and the code and references to the materials used during the process of creating them. 
 
 ## Fisher's Iris Data Set ##
-The Fisher's Iris data set is a classic data set in which is commonly used for data analysis and pattern recognition tasks. It was first introduced by Ronald Fisher in 1936. The data set consists of 150 observations of iris flowers, with four variables measured for each flower: sepal length, sepal width, petal length, and petal width. The observations are divided equally into three species: Iris setosa, Iris versicolor, and Iris virginica. 
+The Fisher's Iris dataset is a is a widely recognised dataset that is commonly used for data analysis and pattern recognition tasks. It was first presented by the British biologist and statistician Ronald Fisher in 1936 in his publication, "The use of multiple measurements in taxonomic problems," as an example of discriminant analysis.
+This dataset is a file that has values separated by commas. The file consists of 150 observations of iris flowers, with four variables measured for each flower: sepal length, sepal width, petal
+length, and petal width. The observations are divided equally among three
+species: Iris setosa, Iris versicolor, and Iris virginica. The dataset is often
+used as a beginner's dataset for learning data analysis and machine learning
+techniques.
+
+*Referances*
+
+https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
+
+https://en.wikipedia.org/wiki/Iris_flower_data_set
+
+http://archive.ics.uci.edu/ml/datasets/Iris
+
 
 
 ## The Code ##
@@ -19,7 +33,7 @@ Overall, the goal of this code is to provide an overview of the data set and to 
 
 
 
-*Referances*
+## Referance list ##
 
 https://www.kaggle.com/datasets/vikrishnan/iris-dataset
 
