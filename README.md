@@ -1,6 +1,6 @@
 # pands-project
 
-## Overview##
+## Overview ##
 This repository was created for the Programming and Scripting module of the ATU Mayo Galway 'Higher Diploma in Computer Programming and Data Analytics' course. It was created to perform a basic exploratory data analysis (EDA) on the Fisher's Iris dataset. The repository contains evidence of the dataset research, Python code, and written documentation, which includes descriptions of the research and the code, as well as references to the materials used during the creation process. The code conducts a basic exploratory data analysis (EDA) on the Fisher's Iris dataset.
 It outputs a summary of each variable (i.e., each column in the dataset) to a text file using the **describe()** method of a Pandas DataFrame. Additionally, it saves a histogram of each variable to a PNG file using the **hist()** method of Matplotlib. Furthermore, it generates a scatter plot of each pair of variables using the **scatter()** method of Matplotlib.
 Overall, the goal of this code is to provide a basic overview of the dataset and to help identify any patterns or relationships between the variables.
