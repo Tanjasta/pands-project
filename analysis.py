@@ -17,12 +17,13 @@ df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN for accura
 # df is used to callculate summary statistics for each column in the data set
 # This includes the count, mean, standard deviation, minimum and maximum values (incl. 25th/50th/75th percentiles) .
 with open('summary.txt', 'w') as f:
-    summary = df.describe()
-    summary_transposed = summary.transpose()
-    f.write(summary_transposed.to_string())
+    summary = df.describe() # Calculates summary statistics
+    summary_transposed = summary.transpose() # Transpose the summary df. This used to have the variables as rows and statistics as columns.
+    f.write(summary_transposed.to_string()) # Writes the transposed summary to the text file using to_string() method
 
 
-# This patr of the code saves a histogram of each variable to a png file
+
+# This part of the code saves a histogram of each variable to a png file
 # It loops over each column in the data frame except the last one (which contains the target variable)
 for column in df.columns[:-1]:
     # Creates a histogram of the data in the column
