@@ -29,7 +29,9 @@ Saves a histogram of each variable to a PNG file using the **hist()** method of 
 Outputs a scatter plot of each pair of variables using the **scatter()** method of Matplotlib.
 Overall, the goal of this code is to provide an overview of the data set and to help identify any patterns or relationships between the variables.
 
+https://www.geeksforgeeks.org/matplotlib-tutorial/
 
+https://www.geeksforgeeks.org/use-of-na_values-parameter-in-read_csv-function-of-pandas-in-python/
 
 
 
@@ -54,6 +56,8 @@ https://realpython.com/pandas-plot-python/
 https://towardsdatascience.com/a-guide-to-pandas-and-matplotlib-for-data-exploration-56fad95f951c
 
 https://www.geeksforgeeks.org/python-data-analysis-using-pandas/
+
+https://www.geeksforgeeks.org/matplotlib-tutorial/
 
 https://stackoverflow.com/questions/43159754/datasets-load-iris-in-python
 
@@ -80,6 +84,8 @@ https://docs.github.com/en/repositories/working-with-files/managing-files/adding
 https://www.geeksforgeeks.org/python-basics-of-pandas-using-iris-dataset/
 
 https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
+
+https://www.geeksforgeeks.org/use-of-na_values-parameter-in-read_csv-function-of-pandas-in-python/
 
 https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html
 

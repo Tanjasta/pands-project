@@ -12,7 +12,7 @@ df = pd.read_csv('iris.csv') # Loading the data set from iris.cvs file into pand
 
 # This part of the code outputs a summary of each variable to a text file
 # df is used to callculate summary statistics for each column in the data set
-# This includes the count, mean, standard deviation, minimum and maximum values.
+# This includes the count, mean, standard deviation, minimum and maximum values (incl. 25th/50th/75th percentiles) .
 with open('summary.txt', 'w') as f:
     f.write(df.describe().to_string())
 
