@@ -1,7 +1,10 @@
 # pands-project
 
 ## Overview##
-This repository was created for the Programming and Scripting module of the ATU Mayo Galway 'Higher Diploma in Computer Programming and Data Analytics' course. It was created to perform an exploratory data analysis (EDA) on the Fisher's Iris data set. It contains an evidence of the research of the data set, a Python code and a writen documentation, including descriptions of the research and the code and references to the materials used during the process of creating them. 
+This repository was created for the Programming and Scripting module of the ATU Mayo Galway 'Higher Diploma in Computer Programming and Data Analytics' course. It was created to perform a basic exploratory data analysis (EDA) on the Fisher's Iris dataset. The repository contains evidence of the dataset research, Python code, and written documentation, which includes descriptions of the research and the code, as well as references to the materials used during the creation process. The code conducts a basic exploratory data analysis (EDA) on the Fisher's Iris dataset.
+It outputs a summary of each variable (i.e., each column in the dataset) to a text file using the **describe()** method of a Pandas DataFrame. Additionally, it saves a histogram of each variable to a PNG file using the **hist()** method of Matplotlib. Furthermore, it generates a scatter plot of each pair of variables using the **scatter()** method of Matplotlib.
+Overall, the goal of this code is to provide a basic overview of the dataset and to help identify any patterns or relationships between the variables.
+
 
 ## Fisher's Iris Data Set ##
 The Fisher's Iris dataset is a is a widely recognised dataset that is commonly used for data analysis and pattern recognition tasks. It was first presented by the British biologist and statistician Ronald Fisher in 1936 in his publication, "The use of multiple measurements in taxonomic problems," as an example of discriminant analysis.
@@ -11,33 +14,22 @@ species: Iris setosa, Iris versicolor, and Iris virginica. The dataset is often
 used as a beginner's dataset for learning data analysis and machine learning
 techniques.
 
-*Referances*
-
-https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
-
-https://en.wikipedia.org/wiki/Iris_flower_data_set
-
-http://archive.ics.uci.edu/ml/datasets/Iris
 
 
+## Description of the script ##
 
 
-## The Code ##
+The script starts by importing two modules: pandas and matplotlib.pyplot. These modules provide useful functions for working with data and creating visualizations.
+Next, it loads a dataset from a CSV file called **'iris.csv'** into a special object called 'df'. This dataset contains information about flowers.
+The script then generates a summary of each variable in the dataset. It does this by using the **describe()** method of the 'df' object, which calculates various statistics such as the count, mean, standard deviation, minimum and maximum values including 25th/50th/75th percentiles for the variables. The summary is then converted to a string format using the **to_string()** method.
+After that, the script saves this summary to a text file named **'summary.txt'**. It writes the string representation of the summary to the file.
+Moving on, the script creates histograms for each variable in the dataset. A histogram shows the distribution of values for a particular variable. The **hist()** method from the matplotlib.pyplot module is used to generate these histograms. Each histogram is given a title using the **title()** method, and then saved as a PNG file using the **savefig()** method. The **clf()** method is called to clear the current figure, preparing it for the next histogram.
+Finally, the script creates scatter plots for each pair of variables in the dataset. A scatter plot displays the relationship between two variables as dots on a graph. The **scatter()** method from the matplotlib.pyplot module is used to create these plots. The **xlabel()** and **ylabel()** methods are used to label the x and y axes respectively. Each scatter plot is saved as a PNG file using the **savefig()** method, and the **clf()** method is called to clear the current figure for the next scatter plot.
+In summary, this script loads and analyses the 'iris.csv' dataset, providing a general summary of the data, creating histograms for each variable, and generating scatter plots to visualize the relationships between variables.
 
-The code performs an exploratory data analysis (EDA) on the Fisher's Iris data set.
-Outputs a summary of each variable (i.e., each column in the data set) to a text file using the **describe()** method of a Pandas DataFrame.
-Saves a histogram of each variable to a PNG file using the **hist()** method of Matplotlib.
-Outputs a scatter plot of each pair of variables using the **scatter()** method of Matplotlib.
-Overall, the goal of this code is to provide an overview of the data set and to help identify any patterns or relationships between the variables.
 
-https://www.geeksforgeeks.org/matplotlib-tutorial/
 
-https://www.geeksforgeeks.org/use-of-na_values-parameter-in-read_csv-function-of-pandas-in-python/
-
-https://www.geeksforgeeks.org/replace-nan-values-with-zeros-in-pandas-dataframe/
-
-https://www.edureka.co/community/42836/how-to-read-pandas-csv-file-with-no-header
-
+## Reasearch and work on the script for analysis ##
 
 
 ## Referance list ##
@@ -93,6 +85,8 @@ https://www.geeksforgeeks.org/python-basics-of-pandas-using-iris-dataset/
 https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
 
 https://www.geeksforgeeks.org/use-of-na_values-parameter-in-read_csv-function-of-pandas-in-python/
+
+https://www.geeksforgeeks.org/replace-nan-values-with-zeros-in-pandas-dataframe/
 
 https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html
 
