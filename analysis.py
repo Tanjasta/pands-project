@@ -8,9 +8,10 @@
 import pandas as pd # Importing pandas module
 import matplotlib.pyplot as plt # Importing matplotlib.pyplot
 
-df = pd.read_csv('iris.csv', na_values=0) # Loading the data set from iris.cvs file into pandas DataFrame object df
-# na_values=0 added to 'iris.csv' so pandas will replace any 0 values with NaN in the resulting df 
-# for accurate calculations of summary statistics and handling of missing data
+df = pd.read_csv('iris.csv') # Loading the data set from iris.cvs file into pandas DataFrame object df
+
+df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN for accurate calculations of summary statistics and handling of missing data
+
 
 # This part of the code outputs a summary of each variable to a text file
 # df is used to callculate summary statistics for each column in the data set

@@ -33,6 +33,8 @@ https://www.geeksforgeeks.org/matplotlib-tutorial/
 
 https://www.geeksforgeeks.org/use-of-na_values-parameter-in-read_csv-function-of-pandas-in-python/
 
+https://www.geeksforgeeks.org/replace-nan-values-with-zeros-in-pandas-dataframe/
+
 
 
 ## Referance list ##
