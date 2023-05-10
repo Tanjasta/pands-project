@@ -50,5 +50,5 @@ for i, column1 in enumerate(df.columns[:-1]):
             # Clears the current figure so we can create a new one
             plt.clf()
 
-# Perform other analysis of the choice as appropriate
+
 
