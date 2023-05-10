@@ -8,7 +8,7 @@
 import pandas as pd # Importing pandas module
 import matplotlib.pyplot as plt # Importing matplotlib.pyplot
 
-df = pd.read_csv('iris.csv') # Loading the data set from iris.cvs file into pandas DataFrame object df
+df = pd.read_csv('iris.csv', header=None) # Loading the data set from iris.cvs file into pandas DataFrame object df
 
 df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN for accurate calculations of summary statistics and handling of missing data
 
@@ -17,7 +17,10 @@ df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN for accura
 # df is used to callculate summary statistics for each column in the data set
 # This includes the count, mean, standard deviation, minimum and maximum values (incl. 25th/50th/75th percentiles) .
 with open('summary.txt', 'w') as f:
-    f.write(df.describe().to_string())
+    summary = df.describe()
+    summary_transposed = summary.transpose()
+    f.write(summary_transposed.to_string())
+
 
 # This patr of the code saves a histogram of each variable to a png file
 # It loops over each column in the data frame except the last one (which contains the target variable)
@@ -27,7 +30,7 @@ for column in df.columns[:-1]:
     # Adds a title to the histogram
     plt.title(column)
     # Saves the histogram to a PNG file with the same name as the column
-    plt.savefig(column + '.png')
+    plt.savefig(str(column) + '.png')
     # Clears the current figure so we can create a new one
     plt.clf()
 
@@ -43,7 +46,7 @@ for i, column1 in enumerate(df.columns[:-1]):
             plt.xlabel(column1)
             plt.ylabel(column2)
             # Saves the scatter plot to a PNG file with the names of the two columns
-            plt.savefig(column1 + '_' + column2 + '.png')
+            plt.savefig(str(column1) + '_' + str(column2) + '.png')
             # Clears the current figure so we can create a new one
             plt.clf()
 
