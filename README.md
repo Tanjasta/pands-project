@@ -55,11 +55,17 @@ Analysis.py
 
 *Author: Tatjana Staunton*
 
-import pandas as pd # Importing pandas module
+import pandas as pd 
 
-import matplotlib.pyplot as plt # Importing matplotlib.pyplot
+   #Importing pandas module
 
-df = pd.read_csv('iris.csv') # Loading the data set from iris.cvs file into pandas DataFrame object df
+import matplotlib.pyplot as plt 
+
+   #Importing matplotlib.pyplot
+
+df = pd.read_csv('iris.csv') 
+
+   #Loading the data set from iris.cvs file into pandas DataFrame object df
 
 *This part of the code outputs a summary of each variable to a text file*
 
@@ -71,13 +77,13 @@ with open('summary.txt', 'w') as f:
 
     f.write(df.describe().to_string())
 
-*This patr of the code saves a histogram of each variable to a png file*
+*This part of the code saves a histogram of each variable to a png file*
 
 *It loops over each column in the data frame except the last one (which contains the target variable)*
 
 for column in df.columns[:-1]:
 
-*Creates a histogram of the data in the column*
+    *Creates a histogram of the data in the column*
 
     plt.hist(df[column])
 
