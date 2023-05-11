@@ -37,8 +37,6 @@ In summary, this script loads and analyses the 'iris.csv' dataset, providing a g
 
 
 
-
-
 ## Research and work on the script for the analysis ##
 
 The in-depth research into Fisher's iris data set was conducted to gain a better understanding of its contents. Extensive research was undertaken, examining various examples of how people analysed this dataset. A wide variety of online resources were consulted to learn how to write a program capable of reading the iris.csv file, analysing the data, providing a general summary, creating histograms for each variable, and generating scatter plots to visualise the relationships between variables.
