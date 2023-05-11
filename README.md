@@ -41,6 +41,200 @@ In summary, this script loads and analyses the 'iris.csv' dataset, providing a g
 
 ## Research and work on the script for the analysis ##
 
+The in-depth research into Fisher's iris data set was conducted to gain a better understanding of its contents. Extensive research was undertaken, examining various examples of how people analysed this dataset. A wide variety of online resources were consulted to learn how to write a program capable of reading the iris.csv file, analysing the data, providing a general summary, creating histograms for each variable, and generating scatter plots to visualise the relationships between variables.
+
+An analysis.py file was created to work on a script that performs a basic exploratory data analysis on Fisher's Iris dataset and outputs a summary of each variable, saves a histogram of each variable to a PNG file, and generates scatter plots for each pair of variables.
+
+Analysis.py
+*This program performs a basic exploratory data analysis (EDA) on the Fisher's Iris data set*
+*Outputs a summary of each variable*
+*Saves a histogram of each variable to a PNG file*
+*Outputs a scatter plot of each pair of variables*
+*Author: Tatjana Staunton*
+
+import pandas as pd # Importing pandas module
+import matplotlib.pyplot as plt # Importing matplotlib.pyplot
+
+df = pd.read_csv('iris.csv') # Loading the data set from iris.cvs file into pandas DataFrame object df
+
+*This part of the code outputs a summary of each variable to a text file*
+*df is used to callculate summary statistics for each column in the data set*
+*This includes the count, mean, standard deviation, minimum and maximum values*
+with open('summary.txt', 'w') as f:
+    f.write(df.describe().to_string())
+
+*This patr of the code saves a histogram of each variable to a png file*
+*It loops over each column in the data frame except the last one (which contains the target variable)*
+for column in df.columns[:-1]:
+    # Creates a histogram of the data in the column
+    plt.hist(df[column])
+    # Adds a title to the histogram
+    plt.title(column)
+    # Saves the histogram to a PNG file with the same name as the column
+    plt.savefig(column + '.png')
+    # Clears the current figure so we can create a new one
+    plt.clf()
+
+*This part of the code output a scatter plot of each pair of variables*
+*It loops over each pair of columns in the data frame except the last one*
+for i, column1 in enumerate(df.columns[:-1]):
+    for j, column2 in enumerate(df.columns[:-1]):
+        # Only creates a scatter plot if the pair of columns is different
+        if i < j:
+            # Creates a scatter plot of the two columns
+            plt.scatter(df[column1], df[column2])
+            # Adds labels to the x and y axes
+            plt.xlabel(column1)
+            plt.ylabel(column2)
+            # Saves the scatter plot to a PNG file with the names of the two columns
+            plt.savefig(column1 + '_' + column2 + '.png')
+            # Clears the current figure so we can create a new one
+            plt.clf()
+
+
+The code produced the following summary output: 
+              5.1         3.5         1.4         0.2
+count  149.000000  149.000000  149.000000  149.000000
+mean     5.848322    3.051007    3.774497    1.205369
+std      0.828594    0.433499    1.759651    0.761292
+min      4.300000    2.000000    1.000000    0.100000
+25%      5.100000    2.800000    1.600000    0.300000
+50%      5.800000    3.000000    4.400000    1.300000
+75%      6.400000    3.300000    5.100000    1.800000
+max      7.900000    4.400000    6.900000    2.500000
+
+The output did not match the desired outcome.
+More research  was done to see why it outputs wrong values (one of the most visible things is wrong count). The research suggested to check for missing values.
+
+The program missingvalues.py was created to check for missing values
+
+The code:
+import pandas as pd
+
+*Load the data set*
+df = pd.read_csv('iris.csv')
+
+*Checks for missing values in each column*
+missing_values = df.isnull().sum()
+
+with open('summary.txt', 'w') as f:
+    f.write(df.describe().to_string())
+
+
+*Display the count of missing values for each variable*
+print(missing_values)
+
+The results came back as no missing values.
+
+Correction to the code was made
+
+df = pd.read_csv('iris.csv', na_values=0) # na_values=0 added to 'iris.csv' so pandas will replace any 0 values with NaN in the resulting df for accurate calculations of summary statistics and handling of missing data
+
+
+
+The na_values=0 argument tells pandas that any occurrence of the value 0 in the data should be treated as a missing value (NaN). This way, when reading the CSV file, pandas will replace any 0 values with NaN in the resulting DataFrame, allowing for accurate calculations of summary statistics and handling of missing data
+
+The results of summary did not change.
+
+Then, more corrections were made,
+
+df = pd.read_csv('iris.csv', na_values=0) was replaced with
+
+df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN
+
+
+*Outputs a summary of each variable to a text file*
+with open('summary.txt', 'w') as f:
+    for column in df.columns:
+        f.write(f"Count for {column}: {df[column].count()}\n")
+
+
+The results did not change. More research was done to see why the outcome is wrong. It seemed that the program was reading the first row as a heading. Research suggested trying header=None. 
+
+Then, header=None was added to try to stop the program from reading the first row as a heading.
+
+df = pd.read_csv('iris.csv') was replaced with
+
+df = pd.read_csv('iris.csv', header=None)
+
+The result of the count in the summary changed from 149 to 150.
+
+Also, an error appeared after the changes.
+
+The error - TypeError: unsupported operand type(s) for +: 'int' and 'str' occurs in the line plt.savefig(column + '.png') 
+
+More research was done to find out why the error was showing up.
+
+The research suggested that the error occurred, because the variable column is of integer type, and the program was trying to concatenate it with a string ('.png').
+To fix this error,the column variable was converted to a string before concatenating it with '.png'
+By using str(column) instead of just column, the variable is converted to a string, allowing program to concatenate it with '.png' and resolve the error.
+
+
+
+Then, the code was further modified to sort the columns in the summary file.
+
+f.write(df.describe().to_string())
+
+
+was replaced by
+
+
+summary = df.describe()
+    summary_transposed = summary.transpose()
+    f.write(summary_transposed.to_string())
+
+
+In this modified version, the summary DataFrame is transposed using the transpose() method to have the variables as rows and statistics as columns. Then, the transposed summary is written to the 'summary.txt' file using to_string() method.
+
+The new output:
+
+   count      mean       std  min  25%   50%  75%  max
+0  150.0  5.843333  0.828066  4.3  5.1  5.80  6.4  7.9
+1  150.0  3.054000  0.433594  2.0  2.8  3.00  3.3  4.4
+2  150.0  3.758667  1.764420  1.0  1.6  4.35  5.1  6.9
+3  150.0  1.198667  0.763161  0.1  0.3  1.30  1.8  2.5
+
+
+
+
+**Final code** 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+*Loads the data set*
+df = pd.read_csv('iris.csv', header=None)
+
+df.replace(0, float('nan'), inplace=True) # Replace 0 values with NaN for accurate calculations of summary statistics and handling of missing data
+
+
+*Output a summary of each variable to a text file*
+with open('summary.txt', 'w') as f:
+    summary = df.describe()
+    summary_transposed = summary.transpose()
+    f.write(summary_transposed.to_string())
+
+
+*Saves a histogram of each variable to a png file*
+for column in df.columns[:-1]:
+    plt.hist(df[column])
+    plt.title(column)
+    plt.savefig(str(column) + '.png')
+    plt.clf()
+
+*Outputs a scatter plot of each pair of variables*
+for i, column1 in enumerate(df.columns[:-1]):
+    for j, column2 in enumerate(df.columns[:-1]):
+        if i < j:
+            plt.scatter(df[column1], df[column2])
+            plt.xlabel(column1)
+            plt.ylabel(column2)
+            plt.savefig(str(column1) + '_' + str(column2) + '.png')
+            plt.clf()
+
+
+
+
 
 ## Referance list ##
 
