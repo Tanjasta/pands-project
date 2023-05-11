@@ -55,17 +55,13 @@ Analysis.py
 
 *Author: Tatjana Staunton*
 
-import pandas as pd 
+import pandas as pd *Importing pandas module*
 
-   #Importing pandas module
+import matplotlib.pyplot as plt *Importing matplotlib.pyplot*
 
-import matplotlib.pyplot as plt 
-
-   #Importing matplotlib.pyplot
+*Loading the data set from iris.cvs file into pandas DataFrame object df*
 
 df = pd.read_csv('iris.csv') 
-
-   #Loading the data set from iris.cvs file into pandas DataFrame object df
 
 *This part of the code outputs a summary of each variable to a text file*
 
@@ -75,7 +71,7 @@ df = pd.read_csv('iris.csv')
 
 with open('summary.txt', 'w') as f:
 
-    f.write(df.describe().to_string())
+f.write(df.describe().to_string())
 
 *This part of the code saves a histogram of each variable to a png file*
 
@@ -83,21 +79,21 @@ with open('summary.txt', 'w') as f:
 
 for column in df.columns[:-1]:
 
-    *Creates a histogram of the data in the column*
+*Creates a histogram of the data in the column*
 
-    plt.hist(df[column])
+plt.hist(df[column])
 
-    *Adds a title to the histogram*
+*Adds a title to the histogram*
 
-    plt.title(column)
+plt.title(column)
 
-    *Saves the histogram to a PNG file with the same name as the column*
+*Saves the histogram to a PNG file with the same name as the column*
 
-    plt.savefig(column + '.png')
+plt.savefig(column + '.png')
 
-    *Clears the current figure so we can create a new one*
+*Clears the current figure so we can create a new one*
 
-    plt.clf()
+plt.clf()
 
 *This part of the code output a scatter plot of each pair of variables*
 
@@ -105,28 +101,28 @@ for column in df.columns[:-1]:
 
 for i, column1 in enumerate(df.columns[:-1]):
 
-    for j, column2 in enumerate(df.columns[:-1]):
+for j, column2 in enumerate(df.columns[:-1]):
 
-        *Only creates a scatter plot if the pair of columns is different*
+*Only creates a scatter plot if the pair of columns is different*
 
-        if i < j:
-            *Creates a scatter plot of the two columns*
+if i < j:
+*Creates a scatter plot of the two columns*
 
-            plt.scatter(df[column1], df[column2])
+plt.scatter(df[column1], df[column2])
 
-            *Adds labels to the x and y axes*
+*Adds labels to the x and y axes*
 
-            plt.xlabel(column1)
+plt.xlabel(column1)
 
-            plt.ylabel(column2)
+plt.ylabel(column2)
 
-            *Saves the scatter plot to a PNG file with the names of the two columns*
+*Saves the scatter plot to a PNG file with the names of the two columns*
 
-            plt.savefig(column1 + '_' + column2 + '.png')
+plt.savefig(column1 + '_' + column2 + '.png')
 
-            *Clears the current figure so we can create a new one*
+*Clears the current figure so we can create a new one*
 
-            plt.clf()
+plt.clf()
 
 
 The code produced the following summary output: 
@@ -168,7 +164,7 @@ missing_values = df.isnull().sum()
 
 with open('summary.txt', 'w') as f:
 
-    f.write(df.describe().to_string())
+f.write(df.describe().to_string())
 
 
 *Display the count of missing values for each variable*
@@ -202,9 +198,9 @@ df.replace(0, float('nan'), inplace=True) *Replace 0 values with NaN*
 
 with open('summary.txt', 'w') as f:
 
-    for column in df.columns:
+for column in df.columns:
 
-        f.write(f"Count for {column}: {df[column].count()}\n")
+f.write(f"Count for {column}: {df[column].count()}\n")
 
 
 The results did not change. More research was done to see why the outcome is wrong. It seemed that the program was reading the first row as a heading. Research suggested trying header=None. 
@@ -239,9 +235,9 @@ was replaced by
 
 summary = df.describe()
 
-    summary_transposed = summary.transpose()
+summary_transposed = summary.transpose()
 
-    f.write(summary_transposed.to_string())
+f.write(summary_transposed.to_string())
 
 
 In this modified version, the summary DataFrame is transposed using the transpose() method to have the variables as rows and statistics as columns. Then, the transposed summary is written to the 'summary.txt' file using to_string() method.
@@ -278,42 +274,42 @@ df.replace(0, float('nan'), inplace=True) *Replace 0 values with NaN for accurat
 
 with open('summary.txt', 'w') as f:
 
-    summary = df.describe()
+summary = df.describe()
 
-    summary_transposed = summary.transpose()
+summary_transposed = summary.transpose()
 
-    f.write(summary_transposed.to_string())
+f.write(summary_transposed.to_string())
 
 
 *Saves a histogram of each variable to a png file*
 
 for column in df.columns[:-1]:
 
-    plt.hist(df[column])
+plt.hist(df[column])
 
-    plt.title(column)
+plt.title(column)
 
-    plt.savefig(str(column) + '.png')
+plt.savefig(str(column) + '.png')
 
-    plt.clf()
+plt.clf()
 
 *Outputs a scatter plot of each pair of variables*
 
 for i, column1 in enumerate(df.columns[:-1]):
 
-    for j, column2 in enumerate(df.columns[:-1]):
+for j, column2 in enumerate(df.columns[:-1]):
 
-        if i < j:
+if i < j:
 
-            plt.scatter(df[column1], df[column2])
+plt.scatter(df[column1], df[column2])
 
-            plt.xlabel(column1)
+plt.xlabel(column1)
 
-            plt.ylabel(column2)
+plt.ylabel(column2)
 
-            plt.savefig(str(column1) + '_' + str(column2) + '.png')
+plt.savefig(str(column1) + '_' + str(column2) + '.png')
 
-            plt.clf()
+plt.clf()
 
 
 
