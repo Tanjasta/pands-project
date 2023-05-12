@@ -45,7 +45,7 @@ An analysis.py file was created to work on a script that performs a basic explor
 
 Analysis.py
 
-*#This program performs a basic exploratory data analysis (EDA) on the Fisher's Iris data set*
+*#This program performs a basic exploratory data analysis on the Fisher's Iris data set*
 
 *#Outputs a summary of each variable*
 
@@ -55,13 +55,17 @@ Analysis.py
 
 *#Author: Tatjana Staunton*
 
-import pandas as pd *#Importing pandas module*
 
-import matplotlib.pyplot as plt *#Importing matplotlib.pyplot*
+
+import pandas as pd       *#Importing pandas module*
+
+import matplotlib.pyplot as plt       *#Importing matplotlib.pyplot*
+
 
 *#Loading the data set from iris.cvs file into pandas DataFrame object df*
 
 df = pd.read_csv('iris.csv') 
+
 
 *#This part of the code outputs a summary of each variable to a text file*
 
@@ -73,9 +77,10 @@ with open('summary.txt', 'w') as f:
 
 f.write(df.describe().to_string())
 
+
 *#This part of the code saves a histogram of each variable to a png file*
 
-*#It loops over each column in the data frame except the last one (which contains the target variable)*
+*#It loops over each column in the data frame except the last one*
 
 for column in df.columns[:-1]:
 
@@ -95,6 +100,7 @@ plt.savefig(column + '.png')
 
 plt.clf()
 
+
 *#This part of the code output a scatter plot of each pair of variables*
 
 *It loops over each pair of columns in the data frame except the last one*
@@ -105,8 +111,7 @@ for j, column2 in enumerate(df.columns[:-1]):
 
 *#Only creates a scatter plot if the pair of columns is different*
 
-if i < j:
-*#Creates a scatter plot of the two columns*
+if i < j:       *#Creates a scatter plot of the two columns*
 
 plt.scatter(df[column1], df[column2])
 
@@ -123,6 +128,8 @@ plt.savefig(column1 + '_' + column2 + '.png')
 *#Clears the current figure so we can create a new one*
 
 plt.clf()
+
+
 
 
 The code produced the following summary output: 
@@ -145,12 +152,19 @@ min        4.300000      2.000000      1.000000      0.100000
 
 max        7.900000      4.400000      6.900000      2.500000
   
+
+
+
 The output did not match the desired outcome.
 More research  was done to see why it outputs wrong values (one of the most visible things is wrong count). The research suggested to check for missing values.
 
+
+
 The program missingvalues.py was created to check for missing values
 
+
 The code:
+
 
 import pandas as pd
 
@@ -181,11 +195,17 @@ df = pd.read_csv('iris.csv', na_values=0)
 
 
 
+
+
 The na_values=0 argument tells pandas that any occurrence of the value 0 in the data should be treated as a missing value (NaN). This way, when reading the CSV file, pandas will replace any 0 values with NaN in the resulting DataFrame, allowing for accurate calculations of summary statistics and handling of missing data
+
+
 
 The results of summary did not change.
 
+
 Then, more corrections were made,
+
 
 df = pd.read_csv('iris.csv', na_values=0) 
 
@@ -203,9 +223,14 @@ for column in df.columns:
 f.write(f"Count for {column}: {df[column].count()}\n")
 
 
+
+
 The results did not change. More research was done to see why the outcome is wrong. It seemed that the program was reading the first row as a heading. Research suggested trying header=None. 
 
+
 Then, header=None was added to try to stop the program from reading the first row as a heading.
+
+
 
 df = pd.read_csv('iris.csv') 
 
@@ -213,13 +238,19 @@ was replaced with
 
 df = pd.read_csv('iris.csv', header=None)
 
+
+
 The result of the count in the summary changed from 149 to 150.
+
+
 
 Also, an error appeared after the changes.
 
 The error - TypeError: unsupported operand type(s) for +: 'int' and 'str' occurs in the line plt.savefig(column + '.png') 
 
+
 More research was done to find out why the error was showing up.
+
 
 The research suggested that the error occurred, because the variable column is of integer type, and the program was trying to concatenate it with a string ('.png').
 To fix this error,the column variable was converted to a string before concatenating it with '.png'
@@ -228,6 +259,7 @@ By using str(column) instead of just column, the variable is converted to a stri
 
 
 Then, the code was further modified to sort the columns in the summary file.
+
 
 f.write(df.describe().to_string())
 
@@ -243,6 +275,8 @@ f.write(summary_transposed.to_string())
 
 
 In this modified version, the summary DataFrame is transposed using the transpose() method to have the variables as rows and statistics as columns. Then, the transposed summary is written to the 'summary.txt' file using to_string() method.
+
+
 
 The new output:
 
@@ -261,9 +295,11 @@ The new output:
 
 **Final code** 
 
+
 import pandas as pd
 
 import matplotlib.pyplot as plt
+
 
 *#Loads the data set*
 
@@ -283,6 +319,7 @@ summary_transposed = summary.transpose()
 f.write(summary_transposed.to_string())
 
 
+
 *#Saves a histogram of each variable to a png file*
 
 for column in df.columns[:-1]:
@@ -294,6 +331,7 @@ plt.title(column)
 plt.savefig(str(column) + '.png')
 
 plt.clf()
+
 
 *#Outputs a scatter plot of each pair of variables*
 
